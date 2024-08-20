@@ -24,7 +24,7 @@ class ServiceRequest extends Model
     use HasFactory;
 
     protected $fillable = [
-        'description', 'priority', 'due_date'
+        'description', 'priority', 'due_date', 'aircraft_id', 'maintenance_company_id'
     ];
 
     public function casts(): array
@@ -47,7 +47,7 @@ class ServiceRequest extends Model
 
     public function serviceStatuses(): HasMany
     {
-        return $this->hasMany(ServiceStatus::class);
+        return $this->hasMany(ServiceStatus::class)->latest();
     }
 
 }

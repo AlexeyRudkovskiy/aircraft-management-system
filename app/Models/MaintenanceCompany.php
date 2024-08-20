@@ -27,4 +27,9 @@ class MaintenanceCompany extends Model
         return $this->hasMany(Aircraft::class);
     }
 
+    public function serviceRequests(): HasMany
+    {
+        return $this->hasMany(ServiceRequest::class);
+    }
+
 }

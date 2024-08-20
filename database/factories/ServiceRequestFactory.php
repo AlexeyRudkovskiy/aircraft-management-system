@@ -2,6 +2,9 @@
 
 namespace Database\Factories;
 
+use App\Enums\ServiceRequest\Priority;
+use App\Models\Aircraft;
+use App\Models\MaintenanceCompany;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +20,11 @@ class ServiceRequestFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'description' => $this->faker->text(50),
+            'priority' => Priority::LOW,
+            'due_date' => today()->addDays($this->faker->randomNumber(5, 10)),
+            'aircraft_id' => Aircraft::factory(),
+            'maintenance_company_id' => MaintenanceCompany::factory()
         ];
     }
 }

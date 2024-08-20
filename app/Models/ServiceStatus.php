@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property Status $status
  * @property ServiceRequest $serviceRequest
  * @property User $user
+ * @property int $user_id
  */
 class ServiceStatus extends Model
 {
