@@ -59,6 +59,6 @@ class AircraftController extends Controller
     {
         $this->aircraftService->delete($aircraft);
 
-        return response()->json([])->status(Response::HTTP_OK);
+        return response()->json([])->setStatusCode(Response::HTTP_OK);
     }
 }

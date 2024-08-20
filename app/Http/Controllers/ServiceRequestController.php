@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreServiceRequestRequest;
-use App\Http\Requests\UpdateServiceRequestRequest;
+use App\Http\Requests\StoreServiceRequest;
+use App\Http\Requests\UpdateServiceRequest;
 use App\Models\ServiceRequest;
 
 class ServiceRequestController extends Controller
@@ -27,7 +27,7 @@ class ServiceRequestController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreServiceRequestRequest $request)
+    public function store(StoreServiceRequest $request)
     {
         //
     }
@@ -51,7 +51,7 @@ class ServiceRequestController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateServiceRequestRequest $request, ServiceRequest $serviceRequest)
+    public function update(UpdateServiceRequest $request, ServiceRequest $serviceRequest)
     {
         //
     }
