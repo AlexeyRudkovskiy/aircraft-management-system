@@ -17,6 +17,7 @@ use Illuminate\Support\Collection;
  * @property Carbon $due_date
  * @property Aircraft $aircraft
  * @property Collection<ServiceStatus> $serviceStatuses
+ * @property MaintenanceCompany $maintenanceCompany
  */
 class ServiceRequest extends Model
 {
@@ -37,6 +38,11 @@ class ServiceRequest extends Model
     public function aircraft(): BelongsTo
     {
         return $this->belongsTo(Aircraft::class);
+    }
+
+    public function maintenanceCompany(): BelongsTo
+    {
+        return $this->belongsTo(MaintenanceCompany::class);
     }
 
     public function serviceStatuses(): HasMany
