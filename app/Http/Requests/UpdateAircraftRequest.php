@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateAircraftRequest extends FormRequest
 {
@@ -11,7 +12,7 @@ class UpdateAircraftRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,8 +22,13 @@ class UpdateAircraftRequest extends FormRequest
      */
     public function rules(): array
     {
+        $id = $this->aircraft->id;
+
         return [
-            //
+            'model' => 'sometimes',
+            'serial_number' => [ 'sometimes', 'numeric', Rule::unique('aircraft', 'serial_number')->ignore($id) ],
+            'registration' => 'sometimes',
+            'maintenance_company_id' => [ 'sometimes', Rule::exists('maintenance_companies', 'id') ]
         ];
     }
 }
