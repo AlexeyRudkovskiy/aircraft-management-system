@@ -36,11 +36,16 @@ interface AircraftServiceContract
      */
     public function update(Aircraft $aircraft, Request $request): Aircraft;
 
+    /**
+     * @param Aircraft $aircraft
+     * @param MaintenanceCompany $maintenanceCompany
+     * @return Aircraft
+     */
     public function assignMaintenanceCompany(Aircraft $aircraft, MaintenanceCompany $maintenanceCompany): Aircraft;
 
     /**
      * @param Aircraft $aircraft
-     * @return mixed
+     * @return void
      */
     public function delete(Aircraft $aircraft): void;
 
