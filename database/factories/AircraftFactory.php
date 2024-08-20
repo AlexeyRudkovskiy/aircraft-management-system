@@ -17,7 +17,9 @@ class AircraftFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'model' => $this->faker->text(10),
+            'serial_number' => $this->faker->numberBetween(10000, 99999),
+            'registration' => $this->faker->text(6)
         ];
     }
 }

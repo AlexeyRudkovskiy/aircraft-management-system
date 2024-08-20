@@ -17,7 +17,9 @@ class MaintenanceCompanyFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'name' => $this->faker->company,
+            'contact' => $this->faker->phoneNumber,
+            'specialization' => $this->faker->text(20)
         ];
     }
 }
