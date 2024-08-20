@@ -7,6 +7,8 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Collection;
 
 /**
  * @property int $id
@@ -14,6 +16,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property Priority $priority
  * @property Carbon $due_date
  * @property Aircraft $aircraft
+ * @property Collection<ServiceStatus> $serviceStatuses
  */
 class ServiceRequest extends Model
 {
@@ -34,6 +37,11 @@ class ServiceRequest extends Model
     public function aircraft(): BelongsTo
     {
         return $this->belongsTo(Aircraft::class);
+    }
+
+    public function serviceStatuses(): HasMany
+    {
+        return $this->hasMany(ServiceStatus::class);
     }
 
 }
