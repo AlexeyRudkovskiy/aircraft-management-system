@@ -3,7 +3,8 @@ import DashboardLayout from "./Layout/DashboardLayout.jsx";
 import Dashboard from "./Pages/Dashboard.jsx";
 import {
     Index as AircraftIndex,
-    Add as AircraftAdd
+    Add as AircraftAdd,
+    Show as AircraftShow
 } from './Pages/Aircraft'
 
 const router = createBrowserRouter([
@@ -24,8 +25,12 @@ const router = createBrowserRouter([
                         element: <AircraftIndex />
                     },
                     {
-                        path: 'add',
+                        path: 'create',
                         element: <AircraftAdd />
+                    },
+                    {
+                        path: ':id',
+                        element: <AircraftShow />
                     }
                 ],
             }

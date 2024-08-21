@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Enums\ServiceRequest\Priority;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -48,6 +49,13 @@ class ServiceRequest extends Model
     public function serviceStatuses(): HasMany
     {
         return $this->hasMany(ServiceStatus::class)->latest();
+    }
+
+    public function currentStatus(): Attribute
+    {
+        return new Attribute(
+            get: fn() => $this->serviceStatuses()->first()?->status
+        );
     }
 
 }

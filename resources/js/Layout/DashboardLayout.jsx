@@ -42,7 +42,7 @@ export default ({ children }) => {
                     <NavigationLink url={'/second'}>Service Requests</NavigationLink>
                 </div>
             </div>
-            <Box className="content w-full p-4" sx={{ backgroundColor: theme => theme.palette.grey[100] }}>
+            <Box className="content w-full p-4 overflow-y-auto" sx={{ backgroundColor: theme => theme.palette.grey[100] }}>
                 <Outlet></Outlet>
             </Box>
         </div>

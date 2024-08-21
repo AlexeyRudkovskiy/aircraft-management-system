@@ -14,6 +14,14 @@ class ServiceRequestResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return parent::toArray($request);
+        return [
+            'id' => $this->id,
+            'description' => $this->description,
+            'priority' => $this->priority,
+            'maintenance_company_id' => $this->maintenance_company_id,
+            'maintenance_company' => $this->maintenanceCompany,
+            'status' => $this->currentStatus,
+            'statuses' => ServiceStatusResource::collection($this->serviceStatuses)
+        ];
     }
 }

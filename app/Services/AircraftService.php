@@ -18,7 +18,9 @@ class AircraftService implements AircraftServiceContract
 
     public function find(int $id): Aircraft
     {
-        return Aircraft::query()->findOrFail($id);
+        return Aircraft::query()
+            ->with('serviceRequests')
+            ->findOrFail($id);
     }
 
     public function store(Request $request): Aircraft
@@ -27,6 +29,7 @@ class AircraftService implements AircraftServiceContract
         $aircraft->fill($request->only([
             'model', 'serial_number', 'registration'
         ]));
+        $aircraft->maintenance_company_id = $request->get('maintenance_company_id');
         $aircraft->save();
 
         return $aircraft;

@@ -22,13 +22,13 @@ export default () => {
             setAircrafts(response.data.data);
         }
         loadAircraft();
-    });
+    }, []);
 
     return <div>
         <div className={"flex align-items-center"}>
             <Typography variant={"h4"}>Aircraft</Typography>
             <div className={"inline-block ml-4 flex align-items-center"}>
-                <Button to={"/aircraft/add"} component={Link}>Add New</Button>
+                <Button to={"/aircraft/create"} component={Link}>Add New</Button>
             </div>
         </div>
 
@@ -48,7 +48,7 @@ export default () => {
                             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                         >
                             <TableCell>
-                                {aircraft.model}
+                                <Link to={`/aircraft/${aircraft.id}`}>{aircraft.model}</Link>
                             </TableCell>
                             <TableCell align="right">{aircraft.serial_number}</TableCell>
                             <TableCell align="right">{aircraft.registration}</TableCell>
