@@ -1,2 +1,3 @@
 import Index from './Index.jsx'
-export { Index }
+import Add from './Add.jsx'
+export { Index, Add }

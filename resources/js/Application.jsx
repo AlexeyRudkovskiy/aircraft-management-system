@@ -1,5 +1,4 @@
 import DashboardLayout from "./Layout/DashboardLayout.jsx";
-import Button from '@mui/material/Button';
 import {useCallback} from "react";
 
 export default ({ children }) => {
