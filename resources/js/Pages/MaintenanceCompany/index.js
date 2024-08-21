@@ -1,2 +1,3 @@
 import Index from "./Index.jsx";
-export { Index }
+import Create from "./Create.jsx";
+export { Index, Create }
