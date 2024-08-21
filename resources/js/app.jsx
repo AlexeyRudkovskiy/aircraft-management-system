@@ -4,9 +4,11 @@ import axios from "axios";
 import Application from "./Application.jsx";
 import './bootstrap';
 
-await axios.get('/sanctum/csrf-cookie')
+(async function () {
+    await axios.get('/sanctum/csrf-cookie')
 
-const root = document.getElementById('app');
-if (root !== null) {
-    createRoot(root).render(<Application></Application>)
-}
+    const root = document.getElementById('app');
+    if (root !== null) {
+        createRoot(root).render(<Application />)
+    }
+})();

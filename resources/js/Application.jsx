@@ -1,3 +1,13 @@
+import DashboardLayout from "./Layout/DashboardLayout.jsx";
+import Button from '@mui/material/Button';
+import {useCallback} from "react";
+
 export default () => {
-    return <div>Hello React!</div>
+    const sayHello = useCallback(() => {
+        alert('test');
+    })
+
+    return <DashboardLayout>
+        <Button variant="contained" onClick={sayHello}>Hello world</Button>
+    </DashboardLayout>;
 }

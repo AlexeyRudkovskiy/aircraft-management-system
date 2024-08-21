@@ -6,6 +6,7 @@
 
         <title>Laravel</title>
 
+        @vitereactrefresh
         @vite('resources/css/app.css')
     </head>
     <body>
