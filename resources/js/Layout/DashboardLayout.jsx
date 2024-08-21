@@ -20,6 +20,7 @@ import {ContentCut} from "@mui/icons-material";
 import NavigationLink from "../Components/NavigationLink.jsx";
 import {Outlet, useNavigate} from "react-router-dom";
 import {useEffect, useState} from "react";
+import NavigationDivider from "../Components/NavigationDivider.jsx";
 
 
 export default ({ children }) => {
@@ -61,8 +62,10 @@ export default ({ children }) => {
             <div className="sidebar w-80 shrink-0 grow-0 relative border-r">
                 <div className="py-4">
                     <NavigationLink url={'/aircraft'}>Aircrafts</NavigationLink>
-                    <NavigationLink url={'/second'}>Maintenance Companies</NavigationLink>
+                    <NavigationLink url={'/maintenance-company'}>Maintenance Companies</NavigationLink>
                     <NavigationLink url={'/second'}>Service Requests</NavigationLink>
+                    <NavigationDivider />
+                    <NavigationLink url={'/second'}>Users</NavigationLink>
                 </div>
             </div>
             <Box className="content w-full p-4 overflow-y-auto" sx={{ backgroundColor: theme => theme.palette.grey[100] }}>

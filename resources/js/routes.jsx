@@ -7,6 +7,9 @@ import {
     Show as AircraftShow
 } from './Pages/Aircraft'
 import {
+    Index as MaintenanceCompanyIndex
+} from './Pages/MaintenanceCompany'
+import {
     Login
 } from "./Pages/Auth/index.jsx";
 
@@ -40,6 +43,16 @@ const router = createBrowserRouter([
                         element: <AircraftShow />
                     }
                 ],
+            },
+            {
+                path: 'maintenance-company',
+                element: <div><Outlet /></div>,
+                children: [
+                    {
+                        path: '',
+                        element: <MaintenanceCompanyIndex />
+                    }
+                ]
             }
         ]
     }

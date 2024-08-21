@@ -14,21 +14,21 @@ import Typography from "@mui/material/Typography";
 import {Link} from "react-router-dom";
 
 export default () => {
-    const [aircrafts, setAircrafts] = useState([]);
+    const [maintenanceCompanies, setMaintenanceCompanies] = useState([]);
 
     useEffect(() => {
         async function loadAircraft() {
-            const response = await axios.get('/api/aircraft');
-            setAircrafts(response.data.data);
+            const response = await axios.get('/api/maintenanceCompany');
+            setMaintenanceCompanies(response.data.data);
         }
         loadAircraft();
     }, []);
 
     return <div>
         <div className={"flex align-items-center"}>
-            <Typography variant={"h4"}>Aircraft</Typography>
+            <Typography variant={"h4"}>Maintenance Companies</Typography>
             <div className={"inline-block ml-4 flex align-items-center"}>
-                <Button to={"/aircraft/create"} component={Link}>Add New</Button>
+                <Button to={"/maintenance-company/create"} component={Link}>Add New</Button>
             </div>
         </div>
 
@@ -37,21 +37,21 @@ export default () => {
                 <TableHead>
                     <TableRow>
                         <TableCell>Model</TableCell>
-                        <TableCell align="right">Serial Number</TableCell>
-                        <TableCell align="right">Registration</TableCell>
+                        <TableCell align="right">Contact</TableCell>
+                        <TableCell align="right">Specialization</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {aircrafts.map((aircraft) => (
+                    {maintenanceCompanies.map((company) => (
                         <TableRow
-                            key={aircraft.id}
+                            key={company.id}
                             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                         >
                             <TableCell>
-                                <Link to={`/aircraft/${aircraft.id}`} className={'hover:underline text-sky-600'}>{aircraft.model}</Link>
+                                <Link to={`/maintenance-company/${company.id}`} className={'hover:underline text-sky-600'}>{company.name}</Link>
                             </TableCell>
-                            <TableCell align="right">{aircraft.serial_number}</TableCell>
-                            <TableCell align="right">{aircraft.registration}</TableCell>
+                            <TableCell align="right">{company.contact}</TableCell>
+                            <TableCell align="right">{company.specialization}</TableCell>
                         </TableRow>
                     ))}
                 </TableBody>
