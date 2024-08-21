@@ -7,3 +7,8 @@ Route::get('/', function () {
 });
 
 \Illuminate\Support\Facades\Route::post('/login', [ \App\Http\Controllers\AuthController::class, 'login' ])->name('login');
+
+Route::get('{all}', function () {
+    return view('welcome');
+})->where(['all' => '.*']);
+
