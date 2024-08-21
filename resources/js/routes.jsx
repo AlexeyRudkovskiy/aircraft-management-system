@@ -6,8 +6,15 @@ import {
     Add as AircraftAdd,
     Show as AircraftShow
 } from './Pages/Aircraft'
+import {
+    Login
+} from "./Pages/Auth/index.jsx";
 
 const router = createBrowserRouter([
+    {
+        path: '/login',
+        element: <Login />
+    },
     {
         path: "/",
         element: <DashboardLayout />,
@@ -35,7 +42,7 @@ const router = createBrowserRouter([
                 ],
             }
         ]
-    },
+    }
 ]);
 
 export { router };

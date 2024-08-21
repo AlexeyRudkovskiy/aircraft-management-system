@@ -54,18 +54,18 @@ export default ({ mode = 'create', data = { model: '', serial_number: '', regist
     const hasError = field => errorFields.indexOf(field) > -1;
 
     return <form method={'post'} className={'mt-6'} onSubmit={handleSubmit(onSubmit)}>
-        <TextField id="outlined-basic" label="Model" variant="outlined" fullWidth={true} {...register('model')}
+        <TextField id="model" label="Model" variant="outlined" fullWidth={true} {...register('model')}
                    error={hasError('model')}
                    helperText={fieldErrors('model')}
         />
         <div className={"mb-6"}></div>
 
-        <TextField id="outlined-basic" label="Serial Number" variant="outlined" fullWidth={true} {...register('serial_number')}
+        <TextField id="serial_number" label="Serial Number" variant="outlined" fullWidth={true} {...register('serial_number')}
                    error={hasError('serial_number')}
                    helperText={fieldErrors('serial_number')} />
         <div className={"mb-6"}></div>
 
-        <TextField id="outlined-basic" label="Registration" variant="outlined" fullWidth={true} {...register('registration')}
+        <TextField id="registration" label="Registration" variant="outlined" fullWidth={true} {...register('registration')}
                    error={hasError('registration')}
                    helperText={fieldErrors('registration')} />
         <div className={"mb-6"}></div>

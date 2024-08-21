@@ -18,10 +18,33 @@ import {
 } from "@mui/material";
 import {ContentCut} from "@mui/icons-material";
 import NavigationLink from "../Components/NavigationLink.jsx";
-import {Outlet} from "react-router-dom";
+import {Outlet, useNavigate} from "react-router-dom";
+import {useEffect, useState} from "react";
 
 
 export default ({ children }) => {
+    const [user, setUser] = useState({});
+    const [loading, setLoading] = useState(true);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        async function getUser() {
+            try {
+                const response = await axios.get('/api/me');
+                setUser(response.data);
+                setLoading(false);
+            } catch (exception) {
+                navigate('/login');
+            }
+        }
+
+        getUser()
+    }, [])
+
+    if (loading) {
+        return <div>Loading...</div>
+    }
+
     return (<>
         <Box sx={{ flexGrow: 1 }} className="z-20 relative">
             <AppBar position="static">
@@ -29,7 +52,7 @@ export default ({ children }) => {
                     <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                         Aircraft Management System
                     </Typography>
-                    <Button color="inherit">Login</Button>
+                    <Button color="inherit">Logout</Button>
                 </Toolbar>
             </AppBar>
         </Box>
