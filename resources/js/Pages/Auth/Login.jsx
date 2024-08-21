@@ -9,6 +9,7 @@ import {useEffect, useState} from "react";
 export default () => {
     const { register, handleSubmit } = useForm();
     const [loading, setLoading] = useState(true);
+    const [errorMessage, setErrorMessage] = useState('')
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -19,14 +20,18 @@ export default () => {
             } catch (error) {
                 /// OK
             }
-            setLoading(true);
+            setLoading(false);
         }
         checkUser();
     }, [])
 
     const onSubmit = async data => {
-        const response = await axios.post('/login', data);
-        navigate('/')
+        try {
+            const response = await axios.post('/login', data);
+            navigate('/')
+        } catch (error) {
+            setErrorMessage(error.response.data.message);
+        }
     }
 
     if (loading) {
@@ -36,9 +41,13 @@ export default () => {
     return <Box
         className={'w-screen h-screen flex items-center justify-center'}
         sx={{ backgroundColor: theme => theme.palette.grey[100] }}>
-        <form className={'rounded-xl shadow-md bg-white p-8 w-96'} onSubmit={handleSubmit(onSubmit)}>
+        <form className={'rounded-xl shadow-md bg-white p-8 w-96'} onSubmit={handleSubmit(onSubmit)} method={'post'}>
             <Typography variant={'h5'}>Login</Typography>
             <div className={'mt-6'}></div>
+
+            {errorMessage.length > 0 && <div className={'mb-8'}>
+                <Typography color={'error'}>{errorMessage}</Typography>
+            </div>}
 
             <TextField type={'email'} label="E-Mail" variant="outlined" fullWidth={true} {...register('email')} />
             <div className={'mt-6'}></div>

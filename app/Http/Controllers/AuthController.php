@@ -24,9 +24,9 @@ class AuthController extends Controller
             return response()->json()->setStatusCode(Response::HTTP_OK);
         }
 
-        return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
-        ])->onlyInput('email');
+        return response()->json([
+            'message' => 'The provided credentials do not match our records.',
+        ])->setStatusCode(Response::HTTP_UNAUTHORIZED);
     }
 
     public function me()
