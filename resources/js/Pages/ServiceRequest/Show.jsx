@@ -28,13 +28,13 @@ export default () => {
         if (!confirm('Are you sure you want to delete this service request?')) {
             return ;
         }
-        const response = await axios.delete(`/api/serviceRequest/${id}`)
-        navigate('/service-request');
+        await axios.delete(`/api/serviceRequest/${id}`)
     })
 
     const setStatus = async (status) => {
-        const response = await axios.post(`/api/serviceRequest/${id}/status`, { status })
-        navigate(0)
+        await axios.post(`/api/serviceRequest/${id}/status`, { status })
+        const response = await axios.get(`/api/serviceRequest/${id}`)
+        setRequest(response.data.data);
     }
 
     const setPendingStatus = useCallback(() => setStatus('pending'));
