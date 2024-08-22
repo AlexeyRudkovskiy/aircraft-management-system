@@ -9,3 +9,4 @@
     ->names('service-request');
 Route::post('/serviceRequest/{serviceRequest}/status', [ \App\Http\Controllers\API\ServiceRequestController::class, 'status' ])->name('serviceRequest.status');
 \Illuminate\Support\Facades\Route::apiResource('maintenanceCompany', \App\Http\Controllers\API\MaintenanceCompanyController::class);
+\Illuminate\Support\Facades\Route::apiResource('user', \App\Http\Controllers\API\UserController::class);

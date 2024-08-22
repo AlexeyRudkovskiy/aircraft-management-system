@@ -17,6 +17,11 @@ import {
     Show as ServiceRequestShow
 } from './Pages/ServiceRequest'
 import {
+    Index as UserIndex,
+    Create as UserCreate,
+    Show as UserShow
+} from './Pages/User'
+import {
     Login
 } from "./Pages/Auth/index.jsx";
 
@@ -84,6 +89,24 @@ const router = createBrowserRouter([
                     {
                         path: ':id',
                         element: <ServiceRequestShow />
+                    }
+                ]
+            },
+            {
+                path: 'user',
+                element: <div><Outlet /></div>,
+                children: [
+                    {
+                        path: '',
+                        element: <UserIndex />
+                    },
+                    {
+                        path: 'create',
+                        element: <UserCreate />
+                    },
+                    {
+                        path: ':id',
+                        element: <UserShow />
                     }
                 ]
             }

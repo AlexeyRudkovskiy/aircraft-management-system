@@ -65,7 +65,7 @@ export default ({ children }) => {
                     <NavigationLink url={'/maintenance-company'}>Maintenance Companies</NavigationLink>
                     <NavigationLink url={'/service-request'}>Service Requests</NavigationLink>
                     <NavigationDivider />
-                    <NavigationLink url={'/second'}>Users</NavigationLink>
+                    <NavigationLink url={'/user'}>Users</NavigationLink>
                 </div>
             </div>
             <Box className="content w-full p-4 overflow-y-auto" sx={{ backgroundColor: theme => theme.palette.grey[100] }}>
