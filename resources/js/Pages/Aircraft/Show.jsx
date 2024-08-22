@@ -21,7 +21,7 @@ export default () => {
     const navigate = useNavigate()
 
     const deleteAircraft = useCallback(async () => {
-        if (confirm('Are you sure you want to delete this plane??')) {
+        if (confirm('Are you sure you want to delete this plane?')) {
             await axios.delete(`/api/aircraft/${aircraft.id}`)
             navigate('/aircraft')
         }
@@ -81,7 +81,7 @@ export default () => {
                 <Button color={'error'} variant={'contained'} onClick={deleteAircraft}>Delete Aircraft</Button>
             </div>
         </div>
-        <div className={'rounded-xl shadow-md bg-white p-6 w-full w-4/12 min-w-96 shrink-0 grow-0'}>
+        <div className={'rounded-xl shadow-md bg-white p-6 w-auto w-4/12 min-w-96 shrink-0 grow-0'}>
             <Typography variant={'h6'}>Edit Aircraft</Typography>
             {!loading && <Form mode={'edit'}
                                data={{

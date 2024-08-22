@@ -8,7 +8,8 @@ import {
 } from './Pages/Aircraft'
 import {
     Index as MaintenanceCompanyIndex,
-    Create as MaintenanceCompanyCreate
+    Create as MaintenanceCompanyCreate,
+    Show as MaintenanceCompanyShow
 } from './Pages/MaintenanceCompany'
 import {
     Login
@@ -56,6 +57,10 @@ const router = createBrowserRouter([
                     {
                         path: 'create',
                         element: <MaintenanceCompanyCreate />
+                    },
+                    {
+                        path: ':id',
+                        element: <MaintenanceCompanyShow />
                     }
                 ]
             }
