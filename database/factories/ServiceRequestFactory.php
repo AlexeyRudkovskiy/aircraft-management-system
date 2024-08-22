@@ -5,6 +5,7 @@ namespace Database\Factories;
 use App\Enums\ServiceRequest\Priority;
 use App\Models\Aircraft;
 use App\Models\MaintenanceCompany;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**

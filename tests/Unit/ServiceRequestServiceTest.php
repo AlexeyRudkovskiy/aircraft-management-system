@@ -65,13 +65,17 @@ class ServiceRequestServiceTest extends TestCase
 
     public function test_it_should_create_record()
     {
-        // 1. Create new aircraft
+        // 1. Create user and authenticate it
+        $user = User::factory()->create();
+        auth()->login($user);
+
+        // 2. Create new aircraft
         $aircraft = Aircraft::factory()->create();
 
-        // 2. Create new maintenance company
+        // 3. Create new maintenance company
         $maintenanceCompany = MaintenanceCompany::factory()->create();
 
-        // 2. Prepare data
+        // 4. Prepare data
         $data = [
             'description' => 'Test',
             'priority' => Priority::LOW,
@@ -80,13 +84,13 @@ class ServiceRequestServiceTest extends TestCase
             'maintenance_company_id' => $maintenanceCompany->id
         ];
 
-        // 3. Fill request
+        // 5. Fill request
         $request = new Request($data);
 
-        // 4. Try to create a record
+        // 6. Try to create a record
         $this->serviceContract->store($request);
 
-        // 5. Assert database
+        // 7. Assert database
         $this->assertDatabaseHas(ServiceRequest::class, $data);
     }
 
