@@ -63,7 +63,7 @@ export default ({ children }) => {
                 <div className="py-4">
                     <NavigationLink url={'/aircraft'}>Aircrafts</NavigationLink>
                     <NavigationLink url={'/maintenance-company'}>Maintenance Companies</NavigationLink>
-                    <NavigationLink url={'/second'}>Service Requests</NavigationLink>
+                    <NavigationLink url={'/service-request'}>Service Requests</NavigationLink>
                     <NavigationDivider />
                     <NavigationLink url={'/second'}>Users</NavigationLink>
                 </div>

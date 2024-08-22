@@ -30,6 +30,7 @@ class ServiceRequestService implements ServiceRequestServiceContract
             'description', 'priority', 'due_date', 'aircraft_id', 'maintenance_company_id'
         ]));
         $serviceRequest->save();
+        $this->updateStatus($serviceRequest, Status::PENDING);
 
         return $serviceRequest;
     }

@@ -81,16 +81,18 @@ export default () => {
                 <Button color={'error'} variant={'contained'} onClick={deleteAircraft}>Delete Aircraft</Button>
             </div>
         </div>
-        <div className={'rounded-xl shadow-md bg-white p-6 w-auto w-4/12 min-w-96 shrink-0 grow-0'}>
-            <Typography variant={'h6'}>Edit Aircraft</Typography>
-            {!loading && <Form mode={'edit'}
-                               data={{
-                                   model: aircraft.model,
-                                   serial_number: aircraft.serial_number,
-                                   registration: aircraft.registration,
-                                   maintenance_company_id: aircraft.maintenance_company_id
-                               }}
-                               url={`/api/aircraft/${aircraft.id}`}></Form>}
+        <div>
+            <div className={'rounded-xl shadow-md bg-white p-6 w-auto w-4/12 min-w-96 shrink-0 grow-0'}>
+                <Typography variant={'h6'}>Edit Aircraft</Typography>
+                {!loading && <Form mode={'edit'}
+                                   data={{
+                                       model: aircraft.model,
+                                       serial_number: aircraft.serial_number,
+                                       registration: aircraft.registration,
+                                       maintenance_company_id: aircraft.maintenance_company_id
+                                   }}
+                                   url={`/api/aircraft/${aircraft.id}`}></Form>}
+            </div>
         </div>
     </div>
 }

@@ -17,11 +17,11 @@ export default () => {
     const [maintenanceCompanies, setMaintenanceCompanies] = useState([]);
 
     useEffect(() => {
-        async function loadAircraft() {
+        async function loadCompanies() {
             const response = await axios.get('/api/maintenanceCompany');
             setMaintenanceCompanies(response.data.data);
         }
-        loadAircraft();
+        loadCompanies();
     }, []);
 
     return <div>
@@ -33,7 +33,7 @@ export default () => {
         </div>
 
         <TableContainer component={Paper} className="mt-6">
-            <Table sx={{ minWidth: 650 }} aria-label="simple table">
+            <Table sx={{ minWidth: 650 }}>
                 <TableHead>
                     <TableRow>
                         <TableCell>Model</TableCell>

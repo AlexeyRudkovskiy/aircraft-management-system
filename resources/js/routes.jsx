@@ -12,6 +12,11 @@ import {
     Show as MaintenanceCompanyShow
 } from './Pages/MaintenanceCompany'
 import {
+    Index as ServiceRequestIndex,
+    Create as ServiceRequestCreate,
+    Show as ServiceRequestShow
+} from './Pages/ServiceRequest'
+import {
     Login
 } from "./Pages/Auth/index.jsx";
 
@@ -61,6 +66,24 @@ const router = createBrowserRouter([
                     {
                         path: ':id',
                         element: <MaintenanceCompanyShow />
+                    }
+                ]
+            },
+            {
+                path: 'service-request',
+                element: <div><Outlet /></div>,
+                children: [
+                    {
+                        path: '',
+                        element: <ServiceRequestIndex />
+                    },
+                    {
+                        path: 'create',
+                        element: <ServiceRequestCreate />
+                    },
+                    {
+                        path: ':id',
+                        element: <ServiceRequestShow />
                     }
                 ]
             }

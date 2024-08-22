@@ -37,8 +37,11 @@ export default () => {
                 <Button color={'error'} variant={'contained'} onClick={deleteCompany}>Delete Maintenance Company</Button>
             </div>
         </div>
-        <div className={'rounded-xl shadow-md bg-white p-6 w-auto w-4/12 min-w-96 shrink-0 grow-0'}>
-            <Form mode={'edit'} url={`/api/maintenanceCompany/${id}`} data={company} />
+        <div>
+            <div className={'rounded-xl shadow-md bg-white p-6 w-auto w-4/12 min-w-96 shrink-0 grow-0'}>
+                <Typography variant={'h6'}>Edit Maintenance Company</Typography>
+                <Form mode={'edit'} url={`/api/maintenanceCompany/${id}`} data={company} />
+            </div>
         </div>
     </div>;
 }

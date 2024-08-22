@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Contracts\ServiceRequestServiceContract;
+use App\Enums\ServiceRequest\Status;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreServiceRequest;
 use App\Http\Requests\UpdateServiceRequest;
@@ -10,6 +11,7 @@ use App\Http\Resources\ServiceRequestResource;
 use App\Models\ServiceRequest;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Validation\Rule;
 
 class ServiceRequestController extends Controller
 {
@@ -49,6 +51,17 @@ class ServiceRequestController extends Controller
     {
         $serviceRequest = $this->service->update($serviceRequest, $request);
         return ServiceRequestResource::make($serviceRequest);
+    }
+
+    public function status(ServiceRequest $serviceRequest, Request $request)
+    {
+        $availableOptions = array_column(Status::cases(), 'value');
+        $request->validate([
+            'status' => Rule::in($availableOptions)
+        ]);
+
+        $this->service->updateStatus($serviceRequest, Status::from($request->get('status')));
+        return response()->json()->setStatusCode(Response::HTTP_CREATED);
     }
 
     /**
